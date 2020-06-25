@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir App</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+    <h1>List Window</h1>
+    <hr>
+    <div id="list"></div>
+</body>
+</html>
+<script>
+        const electron = require("electron");
+    const {ipcRenderer} = electron;
+    ipcRenderer.send("penjualan:request:list");
+
+    ipcRenderer.on("penjualan:response:list", (event, penjualan) => {
+        const listDiv = document.getElementById("list");
+        listDiv.innerHTML="";
+
+        penjualan.forEach(penjualan => {
+            const penjualanDiv = document.createElement("div");
+            const costumerParagraph = document.createElement("p");
+            costumerParagraph.innerHTML = `Nama Costumer: ${penjualan.costumer}`;
+
+            const contactParagraph = document.createElement("p");
+            contactParagraph.innerHTML = `No HP/Telp: ${ penjualan.contact}`;
+
+            const barangParagraph = document.createElement("p");
+            barangParagraph.innerHTML = `Nama Barang: ${penjualan.barang}`;
+
+            const hargaParagraph = document.createElement("p");
+            hargaParagraph.innerHTML = `Harga: ${penjualan.harga}`;
+
+            const jumlahParagraph = document.createElement("p");
+            jumlahParagraph.innerHTML = `Jumlah: ${penjualan.jumlah}`;
+
+            const hasilParagraph = document.createElement("p");
+            hasilParagraph.innerHTML = `Hasil: ${penjualan.hasil}`;
+
+
+            const hr = document.createElement("hr");
+            penjualanDiv.appendChild(costumerParagraph);
+            penjualanDiv.appendChild(contactParagraph);
+            penjualanDiv.appendChild(barangParagraph);
+            penjualanDiv.appendChild(hargaParagraph);
+            penjualanDiv.appendChild(jumlahParagraph);
+            penjualanDiv.appendChild(hasilParagraph);
+            penjualanDiv.appendChild(hr);
+            
+            listDiv.append(penjualanDiv);
+        });
+    });
+    const done = id => {
+        ipcRenderer.send("penjualan:done", id);
+    };
+</script>

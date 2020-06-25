@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.sidebar{
+    background: #20232A;
+    width: 200px;
+    height: 100%;
+    /* color: #ffffff; */
+    text-align: center;
+    text-decoration: none;
+    left: 0;
+    position: fixed;
+
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    box-sizing: border-box;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    /* line-height: 60px; */
+}
+
+.sidebar img{
+    width: 100px;
+    /* color: #ffffff; */
+}
+
+.sidebar a:hover{
+    background: #14B78E;
+}
+
+#baner{
+    width: cover;
+    margin-left: 200px;
+}

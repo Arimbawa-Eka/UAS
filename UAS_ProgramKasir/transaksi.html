@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <h1>Transaksi</h1>
+    <hr>
+
+    <div class="sticky-sidebar-lesson">
+
+        <div class="sandbox">
+          <div class="content">
+            <form id="form">
+                <label for="costumer">Nama Costumer<span class="titik1">:</span></label>
+                <input type="text" name="costumer" id="costumer" class="textbox1"><br>
+                <label for="contact">Nomor Hp/Telp<span class="titik2">:</span></label>
+                <input type="number" name="contact" id="contact" class="textbox1" ><br>
+                <label for="barang">Nama Barang<span class="titik3">:</span></label>
+                <input type="text" name="barang" id="barang" class="textbox2" ><br>
+                <label for="harga">Harga<span class="titik4">:</span></label>
+                <input type="number" name="harga" id="harga" class="textbox2" onkeyup="subtot()"><br>
+                <label for="jumlah">Jumlah<span class="titik5">:</span></label>
+                <input type="number" name="jumlah" id="jumlah" class="textbox2" onkeyup="subtot()"><br>
+                <label for="hasil">Total <span id="titik6">:</span></label>
+                <input type="text" name="hasil" id="hasil">
+                <div class="keranjang">
+                    <input type="button" value="Hitung" class="finalbtn" onclick="finaltotal()">
+                    <input type="button" value="Reload" class="finalbtn" onclick="document.location.reload(true)">
+                    <input type="button" value="+Keranjang" class="finalbtn" onclick="catat()">
+                </div>
+                <div class="save-control">
+                    <input type="submit" value="Save" id="savebtn">
+                </div>
+            </form>
+            <div class="sticky-sidebar1">
+                <table id="nilai" width="50%">
+                <tr>
+                    <th width="100">Nama Barang</th>
+                    <th width="100">Harga (Rp)</th>
+                    <th width="10">Jmlh</th>
+                    <th width="150">Subtotal (Rp)</th>
+                </tr>
+            </table>
+            </div>
+        </div>
+        
+        <div class="judul">
+            <h2>Daftar Barang</h2>
+        </div>
+        <div class="sticky-sidebar2">
+            <table id="table">
+                <thead>
+                    <th>Nama Barang</th>
+                    <th>Harga (Rp)</th>
+                </thead>
+                <tr>
+                    <td>Keyboard Desktop</td>
+                    <td>80000</td>
+                </tr>
+                <tr>
+                    <td>Mouse</td>
+                    <td>50000</td>
+                </tr>
+                <tr>
+                    <td>Printer</td>
+                    <td>800000</td>
+                </tr>
+                <tr>
+                    <td>Speaker</td>
+                    <td>20000</td>
+                </tr>
+                <tr>
+                    <td>Mouse Pad</td>
+                    <td>100000</td>
+                </tr>
+                <tr>
+                    <td>LAN Tester</td>
+                    <td>50000</td>
+                </tr>
+                <tr>
+                    <td>Keyboard Desktop</td>
+                    <td>80000</td>
+                </tr>
+                <tr>
+                    <td>Tang Crimping</td>
+                    <td>65000</td>
+                </tr>
+                <tr>
+                    <td>Kabel LAN (1 Meter)</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Port RJ-46</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td>Headset</td>
+                    <td>85000</td>
+                </tr>
+                <tr>
+                    <td>Printer</td>
+                    <td>800000</td>
+                </tr>
+            </table>
+            <div class="btn-table-barang">
+                <input type="button" value="Add" class="tablebtn" onclick="addbarang()"><br>
+                <input type="button" value="Edit" class="tablebtn" onclick="editbarang()"><br>
+                <input style="background-color:#D00000;" type="button" value="Remove" class="tablebtn" onclick="removebarang()"><br>
+            </div>
+        </div>
+        <div class="roomtot">
+            <h2>Total Belanja: Rp.<span id="total"></span></h2>
+        </div>
+    </div>
+
+    
+
+    <script>
+        var rIndex,
+            table = document.getElementById("table");
+        function checkinputkosong(){
+            var kosong = false,
+                barang = document.getElementById("barang").value,
+                harga = document.getElementById("harga").value;
+            if (barang === ""){
+                alert("Tidak Boleh Kosong");
+                kosong = true;
+            }
+            else if (harga === ""){
+                alert("Tidak Boleh Kosong");
+                kosong = true;
+            }
+            return kosong;
+        }
+
+        function addbarang(){
+            if (!checkinputkosong()){
+                var newRow = table.insertRow(table.length),
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    barang = document.getElementById("barang").value,
+                    harga = document.getElementById("harga").value;
+                cell1.innerHTML = barang;
+                cell2.innerHTML = harga;
+                selectedRowToInput();
+            }
+        }
+
+        function selectedRowToInput(){
+            for (var i = 1; i <table.rows.length; i++){
+                table.rows[i].onclick = function (){
+                    rIndex = this.rowIndex;
+                    document.getElementById("barang").value = this.cells[0].innerHTML;
+                    document.getElementById("harga").value = this.cells[1].innerHTML;
+                };
+            }
+        }
+        selectedRowToInput();
+
+        function editbarang(){
+            var barang = document.getElementById("barang").value,
+                harga = document.getElementById("harga").value;
+            if (!checkinputkosong()){
+                table.rows[rIndex].cells[0].innerHTML = barang;
+                table.rows[rIndex].cells[1].innerHTML =harga;
+            }
+        }
+
+        function removebarang (){
+            table.deleteRow(rIndex);
+            document.getElementById("barang").value = "";
+            document.getElementById("harga").value = "";
+        }
+
+        function subtot(){
+            var a = document.getElementById("harga").value;
+            var b = document.getElementById("jumlah").value;
+            var result = parseInt(a)*parseInt(b);
+            if(!isNaN(result)){
+                document.getElementById("hasil").value = result;
+            }
+        }
+
+        function catat(){
+             // untuk ambil nilai pada input
+             var barang = document.getElementById('barang').value;
+             var harga = document.getElementById('harga').value;
+             var jumlah = document.getElementById('jumlah').value;
+             var subtotal = document.getElementById('hasil').value;
+             
+                  // 0 = baris awal pada tabel
+                  var table = document.getElementsByTagName('table')[0];
+                  
+                  // tambah baris kosong pada tabel
+                  // 0 = dihitung dari atas 
+                  // table.rows.length = menambahkan pada akhir baris
+                  // table.rows.length/1 = menambahkan data pada baris tengah tabel , urutan baris ke 1 
+                  var newRow = table.insertRow(table.rows.length/1);
+                  
+                  // tambah cell pada baris baru
+                  var cell1 = newRow.insertCell(0);
+                  var cell2 = newRow.insertCell(1);
+                  var cell3 = newRow.insertCell(2);
+                  var cell4 = newRow.insertCell(3);
+                  
+                  // tambah nilai ke dalam cell
+                  cell1.innerHTML = barang;
+                  cell2.innerHTML = harga;
+                  cell3.innerHTML = jumlah;
+                  cell4.innerHTML = subtotal;
+        }
+
+        function finaltotal(){
+            var table = document.getElementById("nilai"),sumVal = 0;
+            for (var i = 1; i<table.rows.length; i++){
+            sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+            }
+            document.getElementById("total").innerHTML = sumVal;
+        }
+
+        const electron = require("electron");
+            const {
+                ipcRenderer
+            } = electron;
+
+            const form = document.getElementById("form");
+            const elements = {};
+
+            form.addEventListener("submit", event => {
+                event.preventDefault();
+
+                for (let i = 0; i < form.elements.length; i++) {
+                    if (form.elements[i].type !== "submit")
+                        elements[form.elements[i].name] = form.elements[i].value;
+                }
+
+                ipcRenderer.send("penjualan:transaksi", elements);
+            });        
+    </script>
+</body>
+</html>

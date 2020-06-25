@@ -1,0 +1,209 @@
+body{
+    font-family: sans-serif;
+    background-color: #24292E;
+    color: #fff;
+}
+
+.titik1{
+    padding-left: 43px;
+}
+.titik2{
+    padding-left: 52px;
+}
+
+.titik3{
+    padding-left: 60px;
+}
+
+.titik4{
+    padding-left: 116px;
+}
+.titik5{
+    padding-left: 109px;
+}
+
+
+#titik6{
+    padding-left: 122px;
+}
+
+.textbox1{
+    color: #fff;
+    width: 586px;
+    height: 25px;
+    margin-top: 10px;
+    padding-left: 5px;
+    background: none;
+    border: solid 1px #0A9369;
+}
+
+.textbox2{
+    color: #fff;
+    width: 170px;
+    height: 25px;
+    margin-top: 10px;
+    padding-left: 5px;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #0A9369;
+}
+
+#hasil{
+    color: #fff;
+    width: 170px;
+    height: 25px;
+    margin-top: 10px;
+    padding-left: 5px;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #0A9369;
+}
+
+.save-control{
+    margin-top: -36%;
+    margin-right: -43%;
+}
+
+#savebtn{
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    width: 140px;
+    height: 50px;
+    background-color: #0A9369;
+    border: solid 1px #0A9369;
+}
+#savebtn:hover{
+    background-color: #fff;
+    color: #0A9369;
+}
+
+.btn-table-barang{
+    float: right;
+    margin-top: 10%;
+}
+
+.tablebtn{
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    width: 70px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 15px;
+    padding-left: 10px;
+    background-color: #0A9369;
+    border: solid 1px #0A9369;
+}
+.tablebtn:hover{
+    background-color: #fff;
+    color: #0A9369;
+}
+
+.finalbtn{
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    background-color: #0A9369;
+    border: solid 1px #0A9369;
+}
+
+.sticky-sidebar-lesson {
+    width: 100%;
+    margin: 0 auto;
+}
+  
+.sticky-sidebar-lesson::after {
+    display: table;
+    content: "";
+    clear: both;
+}
+  
+.sticky-sidebar-lesson .sandbox {
+
+    width: 70%;
+    float: left;
+}
+  
+.sticky-sidebar2{
+    background: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+    overflow-y: scroll;
+  
+    position: fixed;
+    top: 18%;
+    right: 0%;
+    width: 860px;
+    height: 30%;
+    float: right;
+}
+
+.sticky-sidebar1{
+    background: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+    overflow-y: scroll;
+  
+    position: fixed;
+    top: 50%;
+    right: 0%;
+    width: 100%;
+    height: 30%;
+    float: right;
+    
+}
+  
+#table{
+    border-collapse: collapse;
+    width: 500px;
+    float: right;
+}
+  
+#table, th{
+    border: solid 1px #0A9369;
+    text-align: center;
+}
+
+#table td{
+    border: solid 1px #0A9369;
+    text-align: justify;
+    padding-left: 5px;   
+    cursor: pointer;
+}
+
+#nilai{
+    border-collapse: collapse;
+    width: 100%;
+    float: left;
+
+
+}
+
+#nilai, th{
+    text-align: center;
+    border: solid 1px #0A9369;
+}
+
+#nilai td{
+    border: solid 1px #0A9369;
+    text-align: justify;
+    padding-left: 5px;   
+    cursor: pointer;
+}
+
+.judul{
+    float: right;
+    margin-right: -30%;
+    margin-top: -30%;
+}
+
+.roomtot{
+    float: right;
+    margin-right: -20%;
+    margin-top: 60%;
+    font-size: 20pt;
+}

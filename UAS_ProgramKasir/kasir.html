@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a onclick = "transaction()"><img src="image/cashier.png" alt=""><br><span>Transaksi</span></a><br>
+        <a onclick = "about()" class="sidemenu"><img src="image/about.png" alt=""><br><span>About</span></a><br>
+    </div>
+    <img src="image/gambar.PNG" alt="gambar" id="baner">
+</body>
+</html>
+<script>
+    function transaction(){
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.send("belanja"); 
+    }
+
+    function about(){
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.send("profil"); 
+    }
+</script>
